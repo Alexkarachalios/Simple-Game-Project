@@ -37,7 +37,7 @@ namespace WindowsFormsApplication2
         {
             if (flag)
             {
-                score += 10;
+                score += 20;
                 label2.Text = score.ToString();
                 
             }else
