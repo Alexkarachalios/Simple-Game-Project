@@ -37,6 +37,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.levels = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.times = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -46,14 +50,15 @@
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.DarkOrange;
             this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panel1.Location = new System.Drawing.Point(8, 37);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(887, 399);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(367, 164);
             this.pictureBox1.Name = "pictureBox1";
@@ -81,7 +86,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(243, 13);
+            this.label1.Location = new System.Drawing.Point(167, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 2;
@@ -90,23 +95,70 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(281, 13);
+            this.label2.Location = new System.Drawing.Point(205, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(13, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "0";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // timer2
             // 
             this.timer2.Interval = 60000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // levels
+            // 
+            this.levels.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.levels.FormattingEnabled = true;
+            this.levels.Items.AddRange(new object[] {
+            "Easy",
+            "Medium",
+            "Hard"});
+            this.levels.Location = new System.Drawing.Point(392, 10);
+            this.levels.Name = "levels";
+            this.levels.Size = new System.Drawing.Size(121, 21);
+            this.levels.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(353, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Level";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(519, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "time (min)";
+            // 
+            // times
+            // 
+            this.times.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.times.FormattingEnabled = true;
+            this.times.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "5"});
+            this.times.Location = new System.Drawing.Point(576, 10);
+            this.times.Name = "times";
+            this.times.Size = new System.Drawing.Size(121, 21);
+            this.times.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 448);
+            this.Controls.Add(this.times);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.levels);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -117,6 +169,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -133,6 +186,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.ComboBox levels;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox times;
     }
 }
 
