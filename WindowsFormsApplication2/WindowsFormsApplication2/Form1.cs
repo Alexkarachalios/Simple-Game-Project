@@ -24,6 +24,21 @@ namespace WindowsFormsApplication2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Form2 username = new Form2();
+            while (true)
+            {
+                if (username.ShowDialog(this) == DialogResult.OK)
+                {
+                    user_label.Text += username.user_tb.Text;
+                    break;
+                }
+                else
+                {
+                    MessageBox.Show("Λάθος είσοδος.");
+                }
+            }
+            username.Dispose();
+
             r = new Random();
 
             //Ekana to panel1 (pista gia ton batraxo) na exei megethos olhs ths formas.

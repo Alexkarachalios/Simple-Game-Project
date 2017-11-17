@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.times = new System.Windows.Forms.ComboBox();
+            this.user_label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -150,11 +151,21 @@
             this.times.Size = new System.Drawing.Size(121, 21);
             this.times.TabIndex = 7;
             // 
+            // user_label
+            // 
+            this.user_label.AutoSize = true;
+            this.user_label.Location = new System.Drawing.Point(734, 13);
+            this.user_label.Name = "user_label";
+            this.user_label.Size = new System.Drawing.Size(35, 13);
+            this.user_label.TabIndex = 8;
+            this.user_label.Text = "User: ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 448);
+            this.Controls.Add(this.user_label);
             this.Controls.Add(this.times);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -190,6 +201,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox times;
+        private System.Windows.Forms.Label user_label;
     }
 }
 
