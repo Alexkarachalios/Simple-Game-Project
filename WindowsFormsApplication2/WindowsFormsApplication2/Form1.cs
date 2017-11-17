@@ -72,8 +72,10 @@ namespace WindowsFormsApplication2
                     break;
             }
 
+            
+
             timer1.Interval = (int)(1000 * lvl);
-            timer2.Interval = Convert.ToInt32(times.Text) * 1000;
+            timer2.Interval = Convert.ToInt32(times.Text) * 60000;
 
             times.Enabled = false;
             levels.Enabled = false;
