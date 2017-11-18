@@ -14,7 +14,11 @@ namespace WindowsFormsApplication2
     {
         Random r;
         int score = 0;
+        int currscore = 0;
         double lvl = 1;
+        int highscore1 = 0;
+        int highscore2 = 0;
+        int highscore3 = 0;
         bool flag;
 
         public Form1()
@@ -64,7 +68,9 @@ namespace WindowsFormsApplication2
             {
                 MessageBox.Show("Hit the 'Play!' button!");
             }
+
             
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -77,17 +83,57 @@ namespace WindowsFormsApplication2
             switch (levels.Text)
             {
                 case "Easy":
-                    lvl = 1;
+                    lvl = 1;                            
                     break;
                 case "Medium":
-                    lvl = 0.8;
+                    lvl = 0.8;        
                     break;
                 case "Hard":
                     lvl = 0.6;
                     break;
             }
+            /*elegxos gia na doume se pio level eimaste kai anathesi timis sto highscore tou 
+             kathe epipedou.*/
+            if (lvl == 1)
+            {
+                if(highscore1 <= currscore)
+                {
+                    highscore1 = currscore;
+                    label6.Text = highscore1.ToString();
+                }else
+                {
+                    label6.Text = highscore1.ToString();
+                }
+                
+            }
 
-            
+            if (lvl == 0.8)
+            {
+                if (highscore2 <= currscore)
+                {
+                    highscore2 = currscore;
+                    label6.Text = highscore2.ToString();
+                }
+                else
+                {
+                    label6.Text = highscore2.ToString();
+                }
+            }
+
+            if (lvl == 0.6)
+            {
+                if (highscore3 <= currscore)
+                {
+                    highscore3 = currscore;
+                    label6.Text = highscore3.ToString();
+                }
+                else
+                {
+                    label6.Text = highscore3.ToString();
+                }
+            }
+
+
 
             timer1.Interval = (int)(1000 * lvl);
             timer2.Interval = Convert.ToInt32(times.Text) * 60000;
@@ -108,10 +154,11 @@ namespace WindowsFormsApplication2
             timer1.Enabled = false;
             timer2.Enabled = false;
             MessageBox.Show("Your score is: " + label2.Text);
+            currscore = score; //mia var gia na pairnw to currentscore tou kathe level  
             score = 0;
             label2.Text = score.ToString();
             flag = false;
-
+            
             levels.Enabled = true;
             times.Enabled = true;
         }
@@ -122,6 +169,11 @@ namespace WindowsFormsApplication2
              * alazei kai to megethos tis pistas.*/
             panel1.Height = this.ClientSize.Height - panel1.Location.Y;
             panel1.Width = this.ClientSize.Width;
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
