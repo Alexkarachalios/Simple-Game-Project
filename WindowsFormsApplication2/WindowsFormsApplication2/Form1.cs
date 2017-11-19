@@ -29,17 +29,15 @@ namespace WindowsFormsApplication2
         private void Form1_Load(object sender, EventArgs e)
         {
             Form2 username = new Form2();
-            while (true)
+           
+            DialogResult ds = username.ShowDialog(this);
+            if (ds == DialogResult.OK)
             {
-                if (username.ShowDialog(this) == DialogResult.OK)
-                {
-                    user_label.Text += username.user_tb.Text;
-                    break;
-                }
-                else
-                {
-                    MessageBox.Show("Λάθος είσοδος.");
-                }
+                user_label.Text += username.user_tb.Text;
+            }
+            else if (ds == DialogResult.Cancel)
+            {
+                this.Dispose();   
             }
             username.Dispose();
 
@@ -68,9 +66,6 @@ namespace WindowsFormsApplication2
             {
                 MessageBox.Show("Hit the 'Play!' button!");
             }
-
-            
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -80,60 +75,32 @@ namespace WindowsFormsApplication2
             timer2.Enabled = true;
 
             //Epilogh level. Gia kathe level alazei o xronos akhnisias tou batraxou.
+            /*Kai elegxos gia na doume se pio level eimaste kai anathesi timis sto highscore tou 
+             kathe epipedou.*/
             switch (levels.Text)
             {
                 case "Easy":
-                    lvl = 1;                            
+                    lvl = 1;
+
+                    if (highscore1 <= currscore) highscore1 = currscore;
+                    label6.Text = highscore1.ToString();
+
                     break;
                 case "Medium":
-                    lvl = 0.8;        
+                    lvl = 0.8;
+
+                    if (highscore2 <= currscore) highscore2 = currscore;
+                    label6.Text = highscore2.ToString();
+
                     break;
                 case "Hard":
                     lvl = 0.6;
+
+                    if (highscore3 <= currscore) highscore3 = currscore;
+                    label6.Text = highscore3.ToString();
+
                     break;
             }
-            /*elegxos gia na doume se pio level eimaste kai anathesi timis sto highscore tou 
-             kathe epipedou.*/
-            if (lvl == 1)
-            {
-                if(highscore1 <= currscore)
-                {
-                    highscore1 = currscore;
-                    label6.Text = highscore1.ToString();
-                }else
-                {
-                    label6.Text = highscore1.ToString();
-                }
-                
-            }
-
-            if (lvl == 0.8)
-            {
-                if (highscore2 <= currscore)
-                {
-                    highscore2 = currscore;
-                    label6.Text = highscore2.ToString();
-                }
-                else
-                {
-                    label6.Text = highscore2.ToString();
-                }
-            }
-
-            if (lvl == 0.6)
-            {
-                if (highscore3 <= currscore)
-                {
-                    highscore3 = currscore;
-                    label6.Text = highscore3.ToString();
-                }
-                else
-                {
-                    label6.Text = highscore3.ToString();
-                }
-            }
-
-
 
             timer1.Interval = (int)(1000 * lvl);
             timer2.Interval = Convert.ToInt32(times.Text) * 60000;
@@ -146,7 +113,7 @@ namespace WindowsFormsApplication2
         {
             Point p1 = new Point(r.Next(0, this.panel1.Width - pictureBox1.Width), r.Next(0, this.panel1.Height - pictureBox1.Height)); //me to this. pairnw to witdh kai height ths formas.alliws pairnei tou button1.
             pictureBox1.Location = p1;
-            
+
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -165,15 +132,10 @@ namespace WindowsFormsApplication2
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            /*Kathe fora pou alazei to megethos ths 
-             * alazei kai to megethos tis pistas.*/
+            /*Kathe fora pou alazei to megethos ths Form1
+             * alazei kai to megethos tis pistas (panel1).*/
             panel1.Height = this.ClientSize.Height - panel1.Location.Y;
             panel1.Width = this.ClientSize.Width;
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }

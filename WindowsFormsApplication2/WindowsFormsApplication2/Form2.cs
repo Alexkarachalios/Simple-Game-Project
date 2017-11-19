@@ -21,5 +21,13 @@ namespace WindowsFormsApplication2
         {
             DialogResult = DialogResult.OK;
         }
+
+        private void user_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                DialogResult = DialogResult.OK;
+            }
+        }
     }
 }

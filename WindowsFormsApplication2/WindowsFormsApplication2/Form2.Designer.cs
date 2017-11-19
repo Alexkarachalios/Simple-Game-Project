@@ -39,6 +39,7 @@
             this.user_tb.Name = "user_tb";
             this.user_tb.Size = new System.Drawing.Size(100, 20);
             this.user_tb.TabIndex = 0;
+            this.user_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.user_tb_KeyDown);
             // 
             // button1
             // 
