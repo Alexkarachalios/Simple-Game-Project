@@ -119,11 +119,17 @@ namespace WindowsFormsApplication2
         private void timer2_Tick(object sender, EventArgs e)
         {
             timer1.Enabled = false;
+
             timer2.Enabled = false;
+
             MessageBox.Show("Your score is: " + label2.Text);
+
             currscore = score; //mia var gia na pairnw to currentscore tou kathe level  
+
             score = 0;
+
             label2.Text = score.ToString();
+
             flag = false;
             
             levels.Enabled = true;
