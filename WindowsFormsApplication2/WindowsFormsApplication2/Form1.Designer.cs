@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -46,7 +47,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -55,7 +56,6 @@
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.DarkOrange;
-            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panel1.Location = new System.Drawing.Point(8, 37);
@@ -63,6 +63,15 @@
             this.panel1.Size = new System.Drawing.Size(887, 399);
             this.panel1.TabIndex = 0;
             this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(159, 13);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(21, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "0%";
             // 
             // pictureBox1
             // 
@@ -94,7 +103,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(278, 13);
+            this.label1.Location = new System.Drawing.Point(342, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 2;
@@ -103,7 +112,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(316, 13);
+            this.label2.Location = new System.Drawing.Point(380, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(13, 13);
             this.label2.TabIndex = 3;
@@ -122,28 +131,30 @@
             "Easy",
             "Medium",
             "Hard"});
-            this.levels.Location = new System.Drawing.Point(392, 10);
+            this.levels.Location = new System.Drawing.Point(463, 8);
             this.levels.Name = "levels";
-            this.levels.Size = new System.Drawing.Size(121, 21);
+            this.levels.Size = new System.Drawing.Size(87, 21);
             this.levels.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(353, 13);
+            this.label3.Location = new System.Drawing.Point(424, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Level";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(519, 13);
+            this.label4.Location = new System.Drawing.Point(556, 13);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "time (min)";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // times
             // 
@@ -153,9 +164,9 @@
             "1",
             "2",
             "5"});
-            this.times.Location = new System.Drawing.Point(576, 10);
+            this.times.Location = new System.Drawing.Point(613, 10);
             this.times.Name = "times";
-            this.times.Size = new System.Drawing.Size(121, 21);
+            this.times.Size = new System.Drawing.Size(84, 21);
             this.times.TabIndex = 7;
             // 
             // user_label
@@ -170,7 +181,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(195, 13);
+            this.label5.Location = new System.Drawing.Point(259, 13);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 9;
@@ -179,7 +190,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(259, 13);
+            this.label6.Location = new System.Drawing.Point(323, 13);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(13, 13);
             this.label6.TabIndex = 10;
@@ -188,7 +199,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(153, 13);
+            this.label7.Location = new System.Drawing.Point(217, 13);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(25, 13);
             this.label7.TabIndex = 11;
@@ -199,20 +210,22 @@
             this.timer3.Interval = 1000;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
-            // label8
+            // label9
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(847, 376);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(21, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "0%";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(104, 13);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 13);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Accurasy:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 448);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -231,7 +244,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -257,6 +269,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }
 

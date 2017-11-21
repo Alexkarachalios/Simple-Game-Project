@@ -68,7 +68,7 @@ namespace WindowsFormsApplication2
                 epitixia =epitixia+ 1;
                 patimata = patimata + 1;
                 pososto = (epitixia / patimata) * 100;
-                label8.Text = pososto + "%";
+                label8.Text =pososto.ToString("n2") + "%";
 
 
             }
@@ -169,7 +169,12 @@ namespace WindowsFormsApplication2
 
         private void timer3_Tick(object sender, EventArgs e)
         {
-           
+           /* label7.Text = timeout.ToString();
+            timeout = timeout - 1;
+            if (timeout == 0)
+            {
+                timer3.Enabled = false;
+            }*/
         }
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
@@ -177,7 +182,18 @@ namespace WindowsFormsApplication2
 
             patimata =patimata+ 1;
             pososto = (epitixia / patimata)*100;
-            label8.Text = pososto + "%";
+            
+            label8.Text =pososto.ToString("n2") + "%";
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
