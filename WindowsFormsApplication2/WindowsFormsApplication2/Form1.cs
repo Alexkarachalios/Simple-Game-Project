@@ -20,7 +20,10 @@ namespace WindowsFormsApplication2
         int highscore2 = 0;
         int highscore3 = 0;
         bool flag;
-
+        int timeout;
+        float patimata = 0;
+        float epitixia = 0;
+        float pososto = 0;
         public Form1()
         {
             InitializeComponent();
@@ -62,7 +65,14 @@ namespace WindowsFormsApplication2
                 score += 20;
                 label2.Text = score.ToString();
                 
-            }else
+                epitixia =epitixia+ 1;
+                patimata = patimata + 1;
+                pososto = (epitixia / patimata) * 100;
+                label8.Text = pososto + "%";
+
+
+            }
+            else
             {
                 MessageBox.Show("Hit the 'Play!' button!");
             }
@@ -73,6 +83,7 @@ namespace WindowsFormsApplication2
             flag = true;
             timer1.Enabled = true;
             timer2.Enabled = true;
+            timer3.Enabled = true;
 
             //Epilogh level. Gia kathe level alazei o xronos akhnisias tou batraxou.
             /*Kai elegxos gia na doume se pio level eimaste kai anathesi timis sto highscore tou 
@@ -102,8 +113,13 @@ namespace WindowsFormsApplication2
                     break;
             }
 
+
+            timeout = int.Parse(times.Text);
+            timeout = timeout * 60;
+
+
             timer1.Interval = (int)(1000 * lvl);
-            timer2.Interval = Convert.ToInt32(times.Text) * 60000;
+            //timer2.Interval = Convert.ToInt32(times.Text) * 60000;
 
             times.Enabled = false;
             levels.Enabled = false;
@@ -114,26 +130,33 @@ namespace WindowsFormsApplication2
             Point p1 = new Point(r.Next(0, this.panel1.Width - pictureBox1.Width), r.Next(0, this.panel1.Height - pictureBox1.Height)); //me to this. pairnw to witdh kai height ths formas.alliws pairnei tou button1.
             pictureBox1.Location = p1;
 
+            
+          
+
+
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            timer1.Enabled = false;
+            if (timeout == -1)
+            {
+                timer1.Enabled = false;
+                timer2.Enabled = false;
+                MessageBox.Show("Your score is: " + label2.Text);
+                currscore = score; //mia var gia na pairnw to currentscore tou kathe level  
+                score = 0;
+                label2.Text = score.ToString();
+                flag = false;
 
-            timer2.Enabled = false;
+                levels.Enabled = true;
+                times.Enabled = true;
+            }
+            else
+            {
+                label7.Text = timeout.ToString();
+                timeout = timeout - 1;
+            }
 
-            MessageBox.Show("Your score is: " + label2.Text);
-
-            currscore = score; //mia var gia na pairnw to currentscore tou kathe level  
-
-            score = 0;
-
-            label2.Text = score.ToString();
-
-            flag = false;
-            
-            levels.Enabled = true;
-            times.Enabled = true;
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -142,6 +165,19 @@ namespace WindowsFormsApplication2
              * alazei kai to megethos tis pistas (panel1).*/
             panel1.Height = this.ClientSize.Height - panel1.Location.Y;
             panel1.Width = this.ClientSize.Width;
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            patimata =patimata+ 1;
+            pososto = (epitixia / patimata)*100;
+            label8.Text = pososto + "%";
         }
     }
 }
