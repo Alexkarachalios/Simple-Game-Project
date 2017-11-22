@@ -24,6 +24,7 @@ namespace WindowsFormsApplication2
         float patimata = 0;
         float epitixia = 0;
         float pososto = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -69,8 +70,6 @@ namespace WindowsFormsApplication2
                 patimata = patimata + 1;
                 pososto = (epitixia / patimata) * 100;
                 label8.Text =pososto.ToString("n2") + "%";
-
-
             }
             else
             {
@@ -83,7 +82,12 @@ namespace WindowsFormsApplication2
             flag = true;
             timer1.Enabled = true;
             timer2.Enabled = true;
-            timer3.Enabled = true;
+
+            patimata = 0;
+            pososto = 0;
+            epitixia = 0;
+
+            label8.Text = "0%";
 
             //Epilogh level. Gia kathe level alazei o xronos akhnisias tou batraxou.
             /*Kai elegxos gia na doume se pio level eimaste kai anathesi timis sto highscore tou 
@@ -127,17 +131,17 @@ namespace WindowsFormsApplication2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //Kanei pause to paixnidh otan einai minimized to parathiro.
+            if (this.WindowState == FormWindowState.Minimized) return;
+
             Point p1 = new Point(r.Next(0, this.panel1.Width - pictureBox1.Width), r.Next(0, this.panel1.Height - pictureBox1.Height)); //me to this. pairnw to witdh kai height ths formas.alliws pairnei tou button1.
             pictureBox1.Location = p1;
-
-            
-          
-
-
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+            if (this.WindowState == FormWindowState.Minimized) return;
+
             if (timeout == -1)
             {
                 timer1.Enabled = false;
@@ -167,16 +171,6 @@ namespace WindowsFormsApplication2
             panel1.Width = this.ClientSize.Width;
         }
 
-        private void timer3_Tick(object sender, EventArgs e)
-        {
-           /* label7.Text = timeout.ToString();
-            timeout = timeout - 1;
-            if (timeout == 0)
-            {
-                timer3.Enabled = false;
-            }*/
-        }
-
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
 
@@ -184,16 +178,6 @@ namespace WindowsFormsApplication2
             pososto = (epitixia / patimata)*100;
             
             label8.Text =pososto.ToString("n2") + "%";
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
