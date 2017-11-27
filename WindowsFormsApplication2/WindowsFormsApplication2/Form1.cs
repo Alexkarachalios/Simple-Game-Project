@@ -21,9 +21,9 @@ namespace WindowsFormsApplication2
         int highscore3 = 0;
         bool flag;
         int timeout;
-        float patimata = 0;
-        float epitixia = 0;
-        float pososto = 0;
+        float clicks = 0;
+        float success = 0;
+        float percentage = 0;
 
         public Form1()
         {
@@ -47,15 +47,15 @@ namespace WindowsFormsApplication2
 
             r = new Random();
 
-            //Ekana to panel1 (pista gia ton batraxo) na exei megethos olhs ths formas.
+            //Panel1 adjusts its dimensions according to Form1.
             panel1.Location = new Point(0, panel1.Location.Y);
             panel1.Width = this.ClientSize.Width;
             panel1.Height = this.ClientSize.Height - panel1.Location.Y;
 
-            //Default level einai to easy.
+            //Default level is easy.
             levels.SelectedIndex = 0;
 
-            //Default xronos paixnidiou einai 1 lepto.
+            //Default time of game is 1 minute.
             times.SelectedIndex = 0;
         }
        
@@ -66,10 +66,10 @@ namespace WindowsFormsApplication2
                 score += 20;
                 label2.Text = score.ToString();
                 
-                epitixia =epitixia+ 1;
-                patimata = patimata + 1;
-                pososto = (epitixia / patimata) * 100;
-                label8.Text =pososto.ToString("n2") + "%";
+                success =success+ 1;
+                clicks = clicks + 1;
+                percentage = (success / clicks) * 100;
+                label8.Text =percentage.ToString("n2") + "%";
             }
             else
             {
@@ -83,15 +83,14 @@ namespace WindowsFormsApplication2
             timer1.Enabled = true;
             timer2.Enabled = true;
 
-            patimata = 0;
-            pososto = 0;
-            epitixia = 0;
+            clicks = 0;
+            percentage = 0;
+            success = 0;
 
             label8.Text = "0%";
 
-            //Epilogh level. Gia kathe level alazei o xronos akhnisias tou batraxou.
-            /*Kai elegxos gia na doume se pio level eimaste kai anathesi timis sto highscore tou 
-             kathe epipedou.*/
+            //Level set.For each level the speed of frog changes.
+            //Check up to see on which level are we and set up the highscore of each level.
             switch (levels.Text)
             {
                 case "Easy":
@@ -131,7 +130,7 @@ namespace WindowsFormsApplication2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //Kanei pause to paixnidh otan einai minimized to parathiro.
+            //Game pauses everytime window minimizes.
             if (this.WindowState == FormWindowState.Minimized) return;
 
             Point p1 = new Point(r.Next(0, this.panel1.Width - pictureBox1.Width), r.Next(0, this.panel1.Height - pictureBox1.Height)); //me to this. pairnw to witdh kai height ths formas.alliws pairnei tou button1.
@@ -147,7 +146,7 @@ namespace WindowsFormsApplication2
                 timer1.Enabled = false;
                 timer2.Enabled = false;
                 MessageBox.Show("Your score is: " + label2.Text);
-                currscore = score; //mia var gia na pairnw to currentscore tou kathe level  
+                currscore = score; //one var to store the current score of each level  
                 score = 0;
                 label2.Text = score.ToString();
                 flag = false;
@@ -165,8 +164,7 @@ namespace WindowsFormsApplication2
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            /*Kathe fora pou alazei to megethos ths Form1
-             * alazei kai to megethos tis pistas (panel1).*/
+            //Everytime Form1 changes dimensions ,panel1 also changes.
             panel1.Height = this.ClientSize.Height - panel1.Location.Y;
             panel1.Width = this.ClientSize.Width;
         }
@@ -174,10 +172,10 @@ namespace WindowsFormsApplication2
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
 
-            patimata =patimata+ 1;
-            pososto = (epitixia / patimata)*100;
+            clicks =clicks+ 1;
+            percentage = (success / clicks)*100;
             
-            label8.Text =pososto.ToString("n2") + "%";
+            label8.Text =percentage.ToString("n2") + "%";
         }
     }
 }
